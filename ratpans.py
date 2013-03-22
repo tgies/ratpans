@@ -15,7 +15,12 @@ config = yaml.load(sc)
 
 with file('jobs.yml', 'r') as j:
     jobs = yaml.load_all(j)
-
+    
+    # yaml.load_all seemingly streams from file or has bizarro threadsafety
+    # issues or something, because I could not manage to close the file
+    # seemingly at any time without it stacking the hell out. this is annoying
+    # and I will figure it out later.
+    
     for job in jobs:
         if 'keyfile' in job:
             keyfile_option = ['--keyfile', job['keyfile']]
