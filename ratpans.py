@@ -18,10 +18,10 @@ config = yaml.load(sc)
 with open('jobs.yml', 'r') as j:
     jobs = yaml.load_all(j)
     
-    # yaml.load_all seemingly streams from file or has bizarro threadsafety
-    # issues or something, because I could not manage to close the file
-    # seemingly at any time without it stacking the hell out. this is annoying
-    # and I will figure it out later.
+    # TODO: yaml.load_all seemingly streams from file or has bizarro
+    # threadsafety issues or something, because I could not manage to close the
+    # file seemingly at any time without it stacking the hell out. this is
+    # annoying and I will figure it out later.
     
     for job in jobs:
         if 'keyfile' in job:
@@ -31,8 +31,13 @@ with open('jobs.yml', 'r') as j:
         else:
             keyfile_option = []
         print 'ratpans: Job ' + job['name'] + ' starting'
-        # TODO: builder class for tarsnap cmdln or class that just abstracts away calling tarsnap probably
-        cmdln = [TARSNAP] + keyfile_option + ['-cf', job['name'] + '-' + time.strftime('%Y%m%d')] + job['files']
+
+        # TODO: builder class for tarsnap cmdln or class that just abstracts
+        # away calling tarsnap probably
+
+        cmdln = [TARSNAP] + keyfile_option + ['-cf', job['name'] + '-' + 
+                                              time.strftime('%Y%m%d')] + job['files']
+
         print cmdln
         ret = call(cmdln)
         if ret == 0:
