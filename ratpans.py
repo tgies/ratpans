@@ -1,7 +1,9 @@
+#!/usr/bin/env python
+
 import sys
-import yaml
 import time
 from subprocess import call
+import yaml
 
 TARSNAP='tarsnap'
 
