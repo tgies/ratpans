@@ -7,13 +7,13 @@ TARSNAP='tarsnap'
 
 print 'ratpans: aight'
 
-with file('ratpans-config.yml', 'r') as c:
+with open('ratpans-config.yml', 'r') as c:
     sc = c.read()
 
 config = yaml.load(sc)
 # TODO: validate config
 
-with file('jobs.yml', 'r') as j:
+with open('jobs.yml', 'r') as j:
     jobs = yaml.load_all(j)
     
     # yaml.load_all seemingly streams from file or has bizarro threadsafety
