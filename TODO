@@ -12,3 +12,4 @@ backup tracking/windowing: delete old backups, keep e.g. "1w 1-3d" meaning 1 wee
 support that append mode or whatever in tarsnap
 try to correctly handle most error exits, including weird server-side cases like account deactivated or whoever
 definitely, definitely break out invocation of and communication with tarsnap to an independent class
+named jobgroups
