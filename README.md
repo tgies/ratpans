@@ -82,4 +82,6 @@ ratpans has extremely limited error checking and currently has no idea what to d
 contributing
 ------------
 
-At this early a stage in development, I'd prefer to establish my own program architecture before I 
+At this early a stage in development, I'd prefer to establish my own program architecture before I open things up to large contributions, but all the same, if you see something in TODO you'd like to take a crack at, I might accept your pull request as long as it's not some big piece of functionality I was going to write that involves a lot of design choices I may or may not agree with.
+
+I hope that makes sense.
