@@ -1,4 +1,5 @@
 permit specifying the jobs file in the config file
+do actual error handling around both the config file and jobs file
 ratpans -f jobs-blah.yml: specify some job file
 permit more than one jobs file
 ratpans job-name ... : run the named job
@@ -15,3 +16,4 @@ support that append mode or whatever in tarsnap
 try to correctly handle most error exits from tarsnap, including weird server-side cases like account deactivated or whoever
 definitely, definitely break out invocation of and communication with tarsnap to an independent class
 named jobgroups
+fix inconsistent use of string concatenation and format()
