@@ -34,7 +34,8 @@ if config['logfile'] and config['logfile'] != 'off':
     try:
         logfile = logging.FileHandler(config['logfile'])
         logfile.setLevel(logging.ERROR)
-        logfileformatter = logging.Formatter(LOGFILEFORMAT, datefmt=LOGTIMEFORMAT)
+        logfileformatter = logging.Formatter(LOGFILEFORMAT,
+                                             datefmt=LOGTIMEFORMAT)
         logfile.setFormatter(logfileformatter)
         log.addHandler(logfile)
     except IOError as e:
@@ -42,15 +43,16 @@ if config['logfile'] and config['logfile'] != 'off':
                   .format(config['logfile'], e.strerror, e.errno))
     else:
         log.critical('started logging to "{0}" (started at {1})'
-                     .format(config['logfile'], time.strftime(LOGTIMEFORMAT, STARTTIME)))
+                     .format(config['logfile'],
+                             time.strftime(LOGTIMEFORMAT, STARTTIME)))
 
 j = open('ratpans-jobs.yml', 'r')
 jobs = yaml.load_all(j)
 
-# TODO: yaml.load_all seemingly streams from file or has bizarro
-# threadsafety issues or something, because I could not manage to close the
-# file seemingly at any time without it stacking the hell out. this is
-# annoying and I will figure it out later.
+# TODO: yaml.load_all seemingly streams from file or has bizarro threadsafety
+# issues or something, because I could not manage to close the file seemingly
+# at any time without it stacking the hell out. this is annoying and I will
+# figure it out later.
 
 for job in jobs:
     if 'keyfile' in job:
@@ -67,8 +69,10 @@ for job in jobs:
     # before just chucking them on a command line and expecting anything
     # sensible to happen.
 
-    cmdln = [TARSNAP] + keyfile_option + ['-cf', job['name'] + '-' + 
-                                          time.strftime('%Y%m%d')] + job['files']
+    cmdln = [TARSNAP] + \
+            keyfile_option + \
+            ['-cf', job['name'] + 
+             '-' + time.strftime('%Y%m%d')] + job['files']
 
     log.debug(cmdln)
     ret = call(cmdln)
