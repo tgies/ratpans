@@ -16,7 +16,7 @@ ratpans is still in an early stage of development and should not be relied upon 
 requirements
 ------------
 
-ratpans requires Tarsnap <= 1.0.28, an active and funded Tarsnap account, Python <= 2.6 and PyYAML.
+ratpans requires Tarsnap >= 1.0.28, an active and funded Tarsnap account, Python >= 2.6 and PyYAML.
 
 usage
 -----
