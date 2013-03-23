@@ -7,9 +7,11 @@ facilitate config being provided as the first document of a jobs file
 yaml schemas, when the format is more stable
 ratpans -f jobs-blah.yml: specify some job file
 ratpans job-name ... : run the named job
-get --list-archives at start of batch, track the files present, refuse to try to overwrite them unless -o option or something. this might be optional as part of the backup tracking/windowing feature
+get --list-archives at start of batch, track the files present, refuse to try to overwrite them unless -o option or something. this might be optional as part of the backup tracking/windowing feature. i think another problem will be that the list of archives for the default or config-level key might not be the same as the list of archives for a job-level key
 backup tracking/windowing: delete old backups, keep e.g. "1w 1-3d" meaning 1 week and 1 through 3 day old backups. (what is the heuristic to pick the nearest available backup to a specified date?)
 support that append mode or whatever in tarsnap
 try to correctly handle most error exits, including weird server-side cases like account deactivated or whoever
 definitely, definitely break out invocation of and communication with tarsnap to an independent class
 named jobgroups
+new config directive: tarsnap (path to tarsnap)
+proper logging

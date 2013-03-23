@@ -33,7 +33,9 @@ with open('jobs.yml', 'r') as j:
         print 'ratpans: Job ' + job['name'] + ' starting'
 
         # TODO: builder class for tarsnap cmdln or class that just abstracts
-        # away calling tarsnap probably
+        # away calling tarsnap probably. REALLY need to be validating things
+        # before just chucking them on a command line and expecting anything
+        # sensible to happen.
 
         cmdln = [TARSNAP] + keyfile_option + ['-cf', job['name'] + '-' + 
                                               time.strftime('%Y%m%d')] + job['files']
