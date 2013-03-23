@@ -11,8 +11,6 @@ LOGTIMEFORMAT = "%Y%m%d %H:%M:%S"
 CONSOLEFORMAT = '%(name)s: %(message)s'
 LOGFILEFORMAT = '%(asctime)s %(name)s: [%(levelname)s] %(message)s'
 
-TARSNAP = 'tarsnap'
-
 # set up logger
 log = logging.getLogger('ratpans')
 log.setLevel(logging.INFO)
@@ -29,6 +27,8 @@ with open('ratpans-config.yml', 'r') as c:
 
 config = yaml.load(sc)
 # TODO: validate config
+
+TARSNAP = config['tarsnap'] if 'tarsnap' in config else 'tarsnap'
 
 if config['logfile'] and config['logfile'] != 'off':
     try:
