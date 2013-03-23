@@ -9,14 +9,14 @@ March 23, 2013
 synopsis
 --------
 
-ratpans is a tool that allows you to automate backups using the Tarsnap backup service.
+ratpans is a tool that allows you to automate backups using Colin Percival's [Tarsnap](https://www.tarsnap.com) backup software and service.
 
 ratpans is still in an early stage of development and should not be relied upon for any purpose, ever.
 
 requirements
 ------------
 
-ratpans requires [Tarsnap](https://www.tarsnap.com/) <= 1.0.28, an active and funded Tarsnap account, Python <= 2.6 and PyYAML.
+ratpans requires Tarsnap <= 1.0.28, an active and funded Tarsnap account, Python <= 2.6 and PyYAML.
 
 usage
 -----
