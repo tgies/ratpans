@@ -1,4 +1,6 @@
+permit specifying the jobs file in the config file
 ratpans -f jobs-blah.yml: specify some job file
+permit more than one jobs file
 ratpans job-name ... : run the named job
 ratpans -c config.yml: specify some config file
 interactive mode -i: confirm before doing anything ever
