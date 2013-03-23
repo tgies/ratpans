@@ -44,7 +44,7 @@ if config['logfile'] and config['logfile'] != 'off':
         log.critical('started logging to "{0}" (started at {1})'
                      .format(config['logfile'], time.strftime(LOGTIMEFORMAT, STARTTIME)))
 
-j = open('jobs.yml', 'r')
+j = open('ratpans-jobs.yml', 'r')
 jobs = yaml.load_all(j)
 
 # TODO: yaml.load_all seemingly streams from file or has bizarro
