@@ -10,7 +10,7 @@ STARTTIME = time.localtime()
 
 LOGTIMEFORMAT = "%Y%m%d %H:%M:%S"
 CONSOLEFORMAT = '%(name)s: %(message)s'
-LOGFILEFORMAT = '%(asctime)s %(name)s: [%(levelname)s] %(message)s'
+LOGFILEFORMAT = '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
 
 # set up logger
 log = logging.getLogger('ratpans')
