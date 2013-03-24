@@ -17,3 +17,4 @@ try to correctly handle most error exits from tarsnap, including weird server-si
 definitely, definitely break out invocation of and communication with tarsnap to an independent class
 named jobgroups
 fix inconsistent use of string concatenation and format()
+figure out loglevels to get the right things in the console vs in the file. there are certain entries I may want *only* in one or the other
