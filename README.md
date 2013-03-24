@@ -23,14 +23,14 @@ usage
 
 Just invoke ratpans directly.
 
-ratpans needs two configuration files to work; one specifying global configuration and one specifying backup jobs to carry out. Currently, ratpans just looks for `ratpans-config.yml` and `ratpans-jobs.yml` in the current directory.
+ratpans uses two configuration files; one specifying global configuration (currently optional) and one specifying backup jobs to carry out. Currently, ratpans just looks for `ratpans-config.yml` and `ratpans-jobs.yml` in the current directory.
 
 Presently, no runtime options are implemented; ratpans looks for these specific files and tries to carry out all the jobs found in them.
 
 configuration
 -------------
 
-`ratpans-config.yml` ought to look something like this:
+If provided, `ratpans-config.yml` ought to look something like this:
 ```yaml
 tarsnap: /usr/local/bin/tarsnap
 keyfile: /root/tarsnap/tarsnap-write.key
@@ -42,8 +42,6 @@ timestamp: "%Y%m%d"
 * `keyfile:` *(optional)* path to a non-passphrase-protected tarsnap keyfile having write permissions to use. Can be overridden on the job level. If not provided, tarsnap uses its default key.
 * `logfile:` *(optional)* a file to log critical events (job starts, ends) and errors to.
 * `timestamp:` *(optional)* the strftime() format to be used for timestamping tarsnap archives. Currently ignored and fixed to "%Y%m%d".
-
-WARNING: Notice how all the configuration directives are optional? Well, right now, you need to have a ratpans-config.yml even if it's empty. I'm sorry.
 
 jobs
 ----

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import time
+import errno
 from subprocess import call
 import logging
 import yaml
@@ -22,15 +23,22 @@ log.addHandler(console)
 
 log.info('aight')
 
-with open('ratpans-config.yml', 'r') as c:
-    sc = c.read()
-
-config = yaml.load(sc)
-# TODO: validate config
+config = {}
+try:
+    with open('ratpans-config.yml', 'r') as c:
+        sc = c.read()
+except IOError as e:
+    if e.errno == errno.ENOENT:
+        log.warning('configuration file not found, proceeding with defaults.')
+    else:
+        raise
+else:
+    config = yaml.load(sc)
+    # TODO: validate config
 
 TARSNAP = config['tarsnap'] if 'tarsnap' in config else 'tarsnap'
 
-if config['logfile'] and config['logfile'] != 'off':
+if 'logfile' in config and config['logfile'] != 'off':
     try:
         logfile = logging.FileHandler(config['logfile'])
         logfile.setLevel(logging.ERROR)
