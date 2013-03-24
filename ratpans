@@ -42,7 +42,7 @@ if config['logfile'] and config['logfile'] != 'off':
         log.error('error: cannot open logfile "{0}": {1} [errno {2}]'
                   .format(config['logfile'], e.strerror, e.errno))
     else:
-        log.critical('started logging to "{0}" (started at {1})'
+        log.critical('started logging to "{0}" (ratpans started at {1})'
                      .format(config['logfile'],
                              time.strftime(LOGTIMEFORMAT, STARTTIME)))
 
