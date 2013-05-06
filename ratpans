@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import time
+import sys
 import errno
 from subprocess import call
 import logging
@@ -63,32 +64,33 @@ jobs = yaml.load_all(j)
 # figure it out later.
 
 for job in jobs:
-    if 'keyfile' in job:
-        keyfile_option = ['--keyfile', job['keyfile']]
-    elif 'keyfile' in config:
-        keyfile_option = ['--keyfile', config['keyfile']]
-    else:
-        keyfile_option = []
+    if job['name'] in sys.argv:
+        if 'keyfile' in job:
+            keyfile_option = ['--keyfile', job['keyfile']]
+        elif 'keyfile' in config:
+            keyfile_option = ['--keyfile', config['keyfile']]
+        else:
+            keyfile_option = []
 
-    log.critical('Job ' + job['name'] + ' starting')
+        log.critical('Job ' + job['name'] + ' starting')
 
-    # TODO: builder class for tarsnap cmdln or class that just abstracts
-    # away calling tarsnap probably. REALLY need to be validating things
-    # before just chucking them on a command line and expecting anything
-    # sensible to happen.
+        # TODO: builder class for tarsnap cmdln or class that just abstracts
+        # away calling tarsnap probably. REALLY need to be validating things
+        # before just chucking them on a command line and expecting anything
+        # sensible to happen.
 
-    cmdln = [TARSNAP] + \
-            keyfile_option + \
-            ['-cf', job['name'] + 
-             '-' + time.strftime('%Y%m%d')] + job['files']
+        cmdln = [TARSNAP] + \
+                keyfile_option + \
+                ['-cf', job['name'] + 
+                 '-' + time.strftime('%Y%m%d')] + job['files']
 
-    log.debug(cmdln)
-    ret = call(cmdln)
-    if ret == 0:
-        log.critical('Job ' + job['name'] + ' completed successfully')
-    else:
-        log.error('Job ' + job['name'] + \
-                        ' failed with code ' + str(ret))
+        log.debug(cmdln)
+        ret = call(cmdln)
+        if ret == 0:
+            log.critical('Job ' + job['name'] + ' completed successfully')
+        else:
+            log.error('Job ' + job['name'] + \
+                            ' failed with code ' + str(ret))
 
 log.critical('done')
 j.close()
